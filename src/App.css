@@ -8,9 +8,15 @@
 * {
   font-family: "KyoboHand";
 }
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .App {
   width: 450px;
-  margin: 50px auto;
   padding: 20px 30px;
   background-color: rgb(253, 248, 218);
   border-radius: 10px;
