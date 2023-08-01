@@ -1,38 +1,125 @@
+@font-face {
+  font-family: "KyoboHand";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: "KyoboHand";
+}
 .App {
+  width: 450px;
+  margin: 50px auto;
+  padding: 20px 30px;
+  background-color: rgb(253, 248, 218);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.Header {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Header h1 {
+  color: #333;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #8d8d8d;
+}
+.Header span {
+  color: #333;
+}
+.Header .today {
+  font-weight: bold;
+  color: cornflowerblue;
+  font-size: 20px;
+  margin-left: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.TodoEditor {
+  margin-top: 20px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.TodoEditor h3 {
+  font-size: 16px;
+  color: #333;
+}
+.TodoEditor .editor_wrapper {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  gap: 10px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.TodoEditor input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+.TodoEditor input:focus {
+  outline: none;
+  border: 1px solid cornflowerblue;
+}
+.TodoEditor button {
+  cursor: pointer;
+  width: 50px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: cornflowerblue;
+  color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.TodoList h3 {
+  color: #333;
+  margin: 5px 0;
+  margin-top: 30px;
+}
+.TodoList input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 5px;
+  background-color: transparent;
+}
+.TodoList input:focus {
+  outline: none;
+  border-bottom: 1px solid cornflowerblue;
+}
+.TodoList .count-wrapper {
+  display: flex;
+  width: fit-content;
+  gap: 20px;
+  background-color: cornflowerblue;
+  padding: 2px 5px;
+  color: #fff;
+  font-size: 14px;
+}
+.todoItem_wrapper {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.TodoItem {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+.TodoItem .content-col {
+  flex: 1;
+}
+
+.TodoItem .date-col {
+  color: gray;
+  font-size: 13px;
+}
+.TodoItem button {
+  cursor: pointer;
+  background-color: cornflowerblue;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #fff;
 }
