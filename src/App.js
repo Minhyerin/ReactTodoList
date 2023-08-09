@@ -3,11 +3,12 @@ import "./App.css";
 import Header from "./Components/Header";
 import TodoEditor from "./Components/TodoEditor";
 import TodoList from "./Components/TodoList";
-import { useState, useRef, useReducer } from "react";
+import { useState, useRef, useReducer, useEffect } from "react";
 
 function reducer(state, action) {
   switch (action.type) {
     case "CREATE": {
+      localStorage.setItem("todo", JSON.stringify(action.newItem));
       return [action.newItem, ...state];
     }
     case "UPDATE": {
