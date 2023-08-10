@@ -7,6 +7,9 @@ import { useState, useRef, useReducer, useEffect } from "react";
 
 function reducer(state, action) {
   switch (action.type) {
+    case "INIT": {
+      return action.data;
+    }
     case "CREATE": {
       const newState = [action.newItem, ...state];
       localStorage.setItem("todo", JSON.stringify(newState));
@@ -51,9 +54,23 @@ const mockTodo = [
 ];
 
 function App() {
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [todo, dispatch] = useReducer(reducer, mockTodo);
-  //const [todo, setTodo] = useState(mockTodo);
   const idRef = useRef(3);
+  useEffect(() => {
+    const rawData = localStorage.getItem("todo");
+    if (!rawData) {
+      setIsDataLoaded(true);
+      return;
+    }
+    const localData = JSON.parse(rawData);
+    if (localData.length == 0) {
+      setIsDataLoaded(true);
+      return;
+    }
+    dispatch({ type: "INIT", data: localData });
+    setIsDataLoaded(true);
+  }, []);
   const onCreate = (content) => {
     dispatch({
       type: "CREATE",
@@ -64,28 +81,15 @@ function App() {
         createdDate: new Date().getTime(),
       },
     });
-    // const newItem = {
-    //   id: idRef.current,
-    //   isDone: false,
-    //   content,
-    //   createdDate: new Date().getTime(),
-    // };
-    //setTodo([newItem, ...todo]);
     idRef.current += 1;
   };
 
   const onUpdate = (targetId) => {
     dispatch({ type: "UPDATE", targetId });
-    // setTodo(
-    //   todo.map((item) =>
-    //     item.id === targetId ? { ...item, isDone: !item.isDone } : item
-    //   )
-    // );
   };
 
   const onDelete = (targetId) => {
     dispatch({ type: "DELETE", targetId });
-    //setTodo(todo.filter((item) => item.id !== targetId));
   };
 
   return (
