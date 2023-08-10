@@ -107,6 +107,10 @@ body {
   height: 370px;
   overflow: scroll;
   margin-bottom: 10px;
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.todoItem_wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 
 .TodoItem {

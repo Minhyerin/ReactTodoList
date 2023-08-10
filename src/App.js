@@ -8,16 +8,21 @@ import { useState, useRef, useReducer, useEffect } from "react";
 function reducer(state, action) {
   switch (action.type) {
     case "CREATE": {
-      localStorage.setItem("todo", JSON.stringify(action.newItem));
-      return [action.newItem, ...state];
+      const newState = [action.newItem, ...state];
+      localStorage.setItem("todo", JSON.stringify(newState));
+      return newState;
     }
     case "UPDATE": {
-      return state.map((item) =>
+      const newState = state.map((item) =>
         item.id === action.targetId ? { ...item, isDone: !item.isDone } : item
       );
+      localStorage.setItem("todo", JSON.stringify(newState));
+      return newState;
     }
     case "DELETE": {
-      return state.filter((item) => item.id !== action.targetId);
+      const newState = state.filter((item) => item.id !== action.targetId);
+      localStorage.setItem("todo", JSON.stringify(newState));
+      return newState;
     }
     default:
       return state;
