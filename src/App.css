@@ -136,3 +136,17 @@ body {
   padding: 5px 10px;
   color: #fff;
 }
+
+@media screen and (max-width: 768px) {
+  body {
+    width: 100vw;
+    display: block;
+    background-color: rgb(253, 248, 218);
+  }
+  .App {
+    margin: 0 auto;
+    width: 80%;
+    height: 90%;
+    box-shadow: none;
+  }
+}
